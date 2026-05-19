@@ -85,4 +85,7 @@ image.
   screen — JavaScript-generated downloads are unreliable on iOS.
 - No external fonts, scripts, analytics or trackers. If you add analytics later,
   add it to `index.html` and re-check the page still loads fast.
+- The page carries a `<meta name="robots" content="noindex">` tag, so it stays
+  out of Google and other search engines. Delete that line in `index.html` if
+  you ever want the card to be search-indexed.
 - Light mode only. No build step — edit `index.html` directly and re-deploy.
