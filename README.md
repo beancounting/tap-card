@@ -46,29 +46,26 @@ Add `photo.jpg` yourself (see step C). Total payload is well under 50KB.
    `https://<your-username>.github.io/tap-card/`.
 5. That URL is what you encode onto the NFC cards.
 
-## B. Deploy to skylineaccounting.com.au
+## B. Custom domain — card.dhimeshpatel.com
 
-Pick whichever fits how the firm site is currently hosted.
+The card is served on the subdomain **card.dhimeshpatel.com**, on top of the
+same GitHub Pages site. Two pieces make this work:
 
-**Option 1 — custom domain on the same GitHub Pages repo**
-Use this if you want the card on a subdomain (e.g. `card.skylineaccounting.com.au`),
-keeping the existing main site untouched.
-1. Add a file named `CNAME` to the repo (no extension) containing one line:
-   `card.skylineaccounting.com.au`
-2. At your DNS provider, add a **CNAME** record:
-   `card` → `<your-username>.github.io`
-3. In **Settings → Pages → Custom domain**, enter the same hostname and tick
-   *Enforce HTTPS* once the certificate is issued.
+1. **In the repo:** the `CNAME` file contains the single line
+   `card.dhimeshpatel.com`. GitHub Pages reads this and serves the site there.
+   (Already done — don't delete this file.)
+2. **In DNS (VentraIP):** a CNAME record sends the subdomain to GitHub:
+   - **Type:** CNAME
+   - **Hostname:** `card`
+   - **Points to:** `beancounting.github.io`
+   - **TTL:** default
 
-**Option 2 — upload to your existing web host**
-Use this if the firm site is on cPanel, a normal web host, or a CMS.
-1. Upload `index.html` and `dhimesh-patel.vcf` (and `photo.jpg`) to a folder in
-   the site's public directory, e.g. `public_html/card/`.
-2. The card is then live at `https://skylineaccounting.com.au/card/`.
-3. **`.vcf` serving:** GitHub Pages and standard hosts (cPanel, Apache, Nginx,
-   Netlify, Cloudflare Pages) already serve `.vcf` correctly so the Save Contact
-   download works. Only on an unusual host, if Save Contact opens as plain text,
-   add a MIME type mapping so `.vcf` is served as `text/vcard`.
+Once DNS resolves, GitHub auto-issues a free SSL certificate. After that, tick
+*Enforce HTTPS* in **repo → Settings → Pages** so the card always loads over
+`https://`.
+
+`.vcf` serving: GitHub Pages serves `.vcf` as `text/x-vcard`, which iOS
+recognises, so Save Contact works.
 
 ## C. Swap in your photo
 
