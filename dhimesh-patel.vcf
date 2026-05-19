@@ -1,0 +1,11 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Patel;Dhimesh;;;
+FN:Dhimesh Patel
+ORG:Skyline Accounting
+TITLE:CPA Director
+TEL;TYPE=CELL,VOICE:+61414907452
+EMAIL;TYPE=WORK:dhimesh@skylineaccounting.com.au
+ADR;TYPE=WORK:;;6/165 Broadwater Terrace;Redland Bay;QLD;4165;Australia
+URL:https://skylineaccounting.com.au
+END:VCARD

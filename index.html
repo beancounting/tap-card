@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1a2332">
+<meta name="description" content="Dhimesh Patel, CPA Director at Skyline Accounting — save my contact, call, email, or visit our website.">
+<title>Dhimesh Patel · Skyline Accounting</title>
+<style>
+  :root {
+    --navy: #1a2332;
+    --accent: #2c6cdf;
+    --accent-dark: #2257b8;
+    --page-bg: #f4f5f7;
+    --card-bg: #ffffff;
+    --text: #1a2332;
+    --muted: #5a6472;
+    --border: #e2e5ea;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--page-bg);
+    color: var(--text);
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 24px 16px 32px;
+  }
+
+  main {
+    width: 100%;
+    max-width: 420px;
+    background: var(--card-bg);
+    border-radius: 20px;
+    box-shadow: 0 6px 28px rgba(26, 35, 50, 0.10);
+    padding: 32px 24px 24px;
+    text-align: center;
+  }
+
+  /* Header band behind the photo */
+  .photo-wrap {
+    width: 128px;
+    height: 128px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 16px rgba(26, 35, 50, 0.18);
+    background: var(--navy);
+  }
+  .photo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  h1 {
+    font-size: 1.55rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--navy);
+  }
+  .title {
+    margin-top: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .company {
+    margin-top: 2px;
+    font-size: 0.95rem;
+    color: var(--muted);
+  }
+
+  .actions {
+    margin-top: 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* Buttons / links */
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 54px;
+    padding: 14px 18px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1.5px solid var(--border);
+    background: #fff;
+    color: var(--navy);
+    transition: transform 0.06s ease, box-shadow 0.15s ease, background 0.15s ease;
+  }
+  .btn svg { flex: 0 0 auto; }
+
+  .btn-primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(44, 108, 223, 0.32);
+    font-size: 1.05rem;
+    min-height: 58px;
+  }
+  .btn-primary:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
+  .btn-secondary:hover { background: #f7f8fa; }
+
+  /* Tap / press animation */
+  .btn:active { transform: scale(0.97); }
+
+  /* Visible keyboard focus */
+  .btn:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  /* Copy-number fallback */
+  .copy-row {
+    margin-top: 2px;
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .copy-btn {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font: inherit;
+    font-size: 0.85rem;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  .copy-btn:active { transform: scale(0.97); }
+  .copy-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .copy-btn[hidden] { display: none; }
+
+  /* Address block */
+  .address {
+    margin-top: 26px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .address a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    min-height: 44px;
+    padding: 6px 4px;
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .address a:active { transform: scale(0.97); }
+
+  footer {
+    margin-top: 18px;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #9aa2ae;
+  }
+
+  /* Toast confirmation */
+  #toast {
+    position: fixed;
+    left: 50%;
+    bottom: 28px;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--navy);
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 11px 20px;
+    border-radius: 999px;
+    box-shadow: 0 6px 20px rgba(26, 35, 50, 0.3);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  #toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<main>
+  <div class="photo-wrap">
+    <!-- SWAP ME: replace the src below with "photo.jpg" once you add your photo. Keep the alt text. -->
+    <img
+      src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22128%22%20height%3D%22128%22%20viewBox%3D%220%200%20128%20128%22%3E%3Crect%20width%3D%22128%22%20height%3D%22128%22%20fill%3D%22%231a2332%22%2F%3E%3Ccircle%20cx%3D%2264%22%20cy%3D%2250%22%20r%3D%2224%22%20fill%3D%22%232c6cdf%22%2F%3E%3Cpath%20d%3D%22M22%20120c0-26%2019-40%2042-40s42%2014%2042%2040z%22%20fill%3D%22%232c6cdf%22%2F%3E%3C%2Fsvg%3E"
+      alt="Dhimesh Patel, CPA Director at Skyline Accounting"
+      width="128" height="128">
+  </div>
+
+  <h1>Dhimesh Patel</h1>
+  <p class="title">CPA Director</p>
+  <p class="company">Skyline Accounting</p>
+
+  <div class="actions">
+    <!-- Primary action: download the vCard. iOS Safari opens the Add to Contacts screen. -->
+    <a class="btn btn-primary" href="dhimesh-patel.vcf" download="dhimesh-patel.vcf" type="text/vcard">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+        <circle cx="9" cy="7" r="4"/>
+        <line x1="19" y1="8" x2="19" y2="14"/>
+        <line x1="22" y1="11" x2="16" y2="11"/>
+      </svg>
+      Save Contact
+    </a>
+
+    <a class="btn btn-secondary" href="tel:+61414907452">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>
+      </svg>
+      Call
+    </a>
+
+    <div class="copy-row">
+      <button type="button" class="copy-btn" id="copyNumber" data-number="+61 414 907 452">
+        Copy number: +61 414 907 452
+      </button>
+    </div>
+
+    <a class="btn btn-secondary" href="mailto:dhimesh@skylineaccounting.com.au">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="2" y="4" width="20" height="16" rx="2"/>
+        <path d="m22 7-10 6L2 7"/>
+      </svg>
+      Email
+    </a>
+
+    <a class="btn btn-secondary" href="https://skylineaccounting.com.au" target="_blank" rel="noopener">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M2 12h20"/>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+      </svg>
+      Visit Website
+    </a>
+
+    <!--
+      SWAP ME: replace PLACEHOLDER_GOOGLE_REVIEW_URL below with your real review link.
+      Get it from Google Business Profile → "Ask for reviews" / "Get more reviews".
+      It usually looks like  https://g.page/r/XXXXXXXXXXXX/review
+    -->
+    <a class="btn btn-secondary" href="PLACEHOLDER_GOOGLE_REVIEW_URL" target="_blank" rel="noopener">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2 9.2 8.6 2 9.2l5.5 4.7L5.8 21 12 17.3 18.2 21l-1.7-7.1L22 9.2l-7.2-.6z"/>
+      </svg>
+      Leave a Google Review
+    </a>
+  </div>
+
+  <address class="address">
+    Skyline Accounting<br>
+    6/165 Broadwater Terrace,<br>
+    Redland Bay QLD 4165
+    <br>
+    <a href="https://www.google.com/maps/search/?api=1&query=6%2F165%20Broadwater%20Terrace%2C%20Redland%20Bay%20QLD%204165" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+        <circle cx="12" cy="10" r="3"/>
+      </svg>
+      Get directions
+    </a>
+  </address>
+
+  <footer>Tap to connect</footer>
+</main>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+  (function () {
+    var copyBtn = document.getElementById('copyNumber');
+    var toast = document.getElementById('toast');
+    var toastTimer;
+
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function () {
+        toast.classList.remove('show');
+      }, 2000);
+    }
+
+    // If the clipboard API is unavailable, hide the copy affordance entirely.
+    if (!navigator.clipboard || !navigator.clipboard.writeText) {
+      copyBtn.hidden = true;
+      return;
+    }
+
+    copyBtn.addEventListener('click', function () {
+      navigator.clipboard.writeText(copyBtn.dataset.number).then(function () {
+        showToast('Number copied');
+      }).catch(function () {
+        showToast('Couldn’t copy — ' + copyBtn.dataset.number);
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
