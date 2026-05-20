@@ -67,16 +67,17 @@ Once DNS resolves, GitHub auto-issues a free SSL certificate. After that, tick
 `.vcf` serving: GitHub Pages serves `.vcf` as `text/x-vcard`, which iOS
 recognises, so Save Contact works.
 
-## C. Swap in your photo
+## C. Swap the photo
 
-1. Add a square photo to this folder named `photo.jpg` — roughly 400×400px,
-   optimised to under ~80KB (a JPEG at 80% quality is fine).
-2. In `index.html`, find the comment `SWAP ME` above the `<img>` tag and replace
-   the long `src="data:image/svg+xml,..."` value with `src="photo.jpg"`.
-3. Leave the `alt`, `width` and `height` attributes as they are.
+The current photo is `photo.webp` (238×238, ~10KB). To replace it:
 
-Until you do this, the page shows a neutral navy avatar silhouette — no broken
-image.
+1. Drop a new square photo into the repo named `photo.webp` (or `photo.jpg` if
+   you'd rather — just update the `<img src>` to match). Roughly 400×400 is
+   plenty for the 128px display size on Retina screens; keep the file under
+   ~80KB if you can.
+2. Commit and push. The live site redeploys automatically.
+
+The `<img>` tag's `alt`, `width` and `height` should stay as they are.
 
 ## Notes
 
