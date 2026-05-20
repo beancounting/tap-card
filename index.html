@@ -4,10 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#1a2332">
-<meta name="description" content="Dhimesh Patel, CPA Director at Skyline Accounting — save my contact, book a call, email, or visit our website.">
+<meta name="description" content="Dhimesh Patel, CPA Director at Skyline Accounting — save my contact, book a call, or visit our website.">
 <!-- Keeps this card out of search engines. Delete this line to allow indexing. -->
 <meta name="robots" content="noindex">
 <title>Dhimesh Patel · Skyline Accounting</title>
+<link rel="icon" href="data:,">
 <style>
   :root {
     --navy: #1a2332;
@@ -160,6 +161,16 @@
     color: #9aa2ae;
   }
 
+  .address a:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .btn:active,
+    .address a:active { transform: none; }
+  }
 </style>
 </head>
 <body>
@@ -169,7 +180,7 @@
     <img
       src="photo.webp"
       alt="Dhimesh Patel, CPA Director at Skyline Accounting"
-      width="128" height="128">
+      width="128" height="128" decoding="async">
   </div>
 
   <h1>Dhimesh Patel</h1>

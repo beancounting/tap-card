@@ -1,7 +1,7 @@
 # Skyline Accounting — Tap to Connect card
 
 A single-page digital business card for NFC card taps. Visitors tap a physical
-card, their phone opens this page, and they can save the contact, call, email,
+card, their phone opens this page, and they can save the contact, book a call,
 visit the website, or leave a Google review.
 
 ## Files
@@ -12,39 +12,47 @@ visit the website, or leave a Google review.
 | `dhimesh-patel.vcf` | The contact card the **Save Contact** button downloads. |
 | `README.md` | This file. |
 
-Add `photo.jpg` yourself (see step C). Total payload is well under 50KB.
+A starter `photo.webp` is included; replace it via step C if you fork this card. Total payload is well under 50KB.
 
-## Before you go live — customise these
+## Customising for another person
 
-1. **Google review URL.** In `index.html`, find `PLACEHOLDER_GOOGLE_REVIEW_URL`
-   and replace it with the real link. Get it from Google Business Profile →
-   *Ask for reviews* / *Get more reviews*. It usually looks like
-   `https://g.page/r/XXXXXXXXXXXX/review`.
-2. **Photo.** See step C below.
-3. **Check the details.** Confirm the phone, email, address and website in both
-   `index.html` and `dhimesh-patel.vcf` are correct.
+If you're forking this card for a colleague (Koji, Jay or anyone else), the
+fields to change are:
+
+1. **In `index.html`** — name in `<h1>`, title, company line, image `alt` text,
+   Calendly URL on the Book a Call button, Google review URL on the Leave a
+   Google Review button, office address (both the `<address>` block and the
+   `query=` parameter on the Get directions link), and the address string in
+   the inline map-routing script at the bottom of the file.
+2. **In `dhimesh-patel.vcf`** — every line: `N`, `FN`, `ORG`, `TITLE`, `EMAIL`,
+   `ADR`, `URL`. Rename the file to match the new person and update the
+   Save Contact `href` in `index.html` to match the new filename.
+3. **Photo** — see step C below.
+4. **Custom domain** — the `CNAME` file plus your DNS provider's CNAME record.
 
 ---
 
 ## A. Deploy to GitHub Pages
 
-1. Create a new GitHub repository (e.g. `tap-card`). It can be public or private
-   — note that GitHub Pages on a free account requires a public repo.
+1. Create a new GitHub repository (e.g. `skyline-tap-card`). It can be public
+   or private, but note that GitHub Pages on a free account requires a public
+   repo.
 2. Commit all files to the `main` branch:
    ```
    git init
-   git add index.html dhimesh-patel.vcf README.md
+   git add .
    git commit -m "Add tap-to-connect card"
    git branch -M main
-   git remote add origin https://github.com/<your-username>/tap-card.git
+   git remote add origin https://github.com/<your-username>/<repo-name>.git
    git push -u origin main
    ```
 3. In the repo: **Settings → Pages**. Under *Build and deployment*, set
    **Source** = *Deploy from a branch*, **Branch** = `main`, folder = `/ (root)`.
    Save.
-4. Wait ~1 minute. Your page goes live at
-   `https://<your-username>.github.io/tap-card/`.
-5. That URL is what you encode onto the NFC cards.
+4. Wait ~1 minute. The page goes live at
+   `https://<your-username>.github.io/<repo-name>/`. Encode that URL onto the
+   NFC cards, or if you've also set up the custom domain in Section B, encode
+   that hostname instead.
 
 ## B. Custom domain — card.dhimeshpatel.com
 
