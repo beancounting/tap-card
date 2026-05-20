@@ -227,7 +227,7 @@
     6/165 Broadwater Terrace,<br>
     Redland Bay QLD 4165
     <br>
-    <a href="https://www.google.com/maps/search/?api=1&query=6%2F165%20Broadwater%20Terrace%2C%20Redland%20Bay%20QLD%204165" target="_blank" rel="noopener">
+    <a href="https://www.google.com/maps/search/?api=1&query=6%2F165%20Broadwater%20Terrace%2C%20Redland%20Bay%20QLD%204165" id="directionsLink" target="_blank" rel="noopener">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
         <circle cx="12" cy="10" r="3"/>
@@ -238,6 +238,23 @@
 
   <footer>Tap to connect</footer>
 </main>
+
+<script>
+  // Route the Get directions link to the user's likely default map app.
+  // iPhone/iPad → Apple Maps. Android → geo: URI (shows the device's map-app chooser).
+  // Anything else (desktop) falls through to the Google Maps href in the HTML.
+  (function () {
+    var link = document.getElementById('directionsLink');
+    if (!link) return;
+    var q = encodeURIComponent('6/165 Broadwater Terrace, Redland Bay QLD 4165');
+    var ua = navigator.userAgent;
+    if (/iPhone|iPad|iPod/.test(ua)) {
+      link.href = 'https://maps.apple.com/?q=' + q;
+    } else if (/Android/.test(ua)) {
+      link.href = 'geo:0,0?q=' + q;
+    }
+  })();
+</script>
 
 </body>
 </html>
